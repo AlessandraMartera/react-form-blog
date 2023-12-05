@@ -8,14 +8,16 @@ export default function TheForm() {
   }
 
   const [articolsList, setArticolsList] = useState([
-    { name: "pallina di natale", price: 2 }, 
-    { name: "bastoncino di zucchero", price: 4 }
+    { id: 0, name: "pallina di natale", price: 2 }, 
+    { id: 1, name: "bastoncino di zucchero", price: 4 }
   ])
 
   const [formData, setFormData] = useState(initialFormData)
 
   function changeValueForm(value, fieldName){
-    const newFormData = { ...formData };
+    const newFormData = { 
+      id: articolsList.length,
+      ...formData };
     // aggiorno la chiave fieldName con il valore newValue
     newFormData[fieldName] = value
     // passo l'oggetto modificato a setFormData
@@ -34,12 +36,18 @@ export default function TheForm() {
     
   }
 
+  function destroyArticol(id){
+    setArticolsList(articolsList.filter((articol) => articol.id !== id))
+    console.log(articolsList)
+  }
+
   return (
     <>
     <ul>
      { articolsList.map((articol, idx) => { 
-      
-      return ( <li key={idx}> NOME ARTICOLO: {articol.name} - PREZZO: {articol.price} € </li>
+
+        // console.log(articolsList)
+      return ( <li key={idx}> NOME ARTICOLO: {articol.name} - PREZZO: {articol.price} € <button onClick={() => {destroyArticol(idx)}}>X</button> </li>
         
       )
      })}
