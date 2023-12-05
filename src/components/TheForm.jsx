@@ -14,12 +14,18 @@ export default function TheForm() {
 
   const [formData, setFormData] = useState(initialFormData)
 
+  const [editingArticolId, setEditingArticolId] = useState(null);
+
+
   function changeValueForm(value, fieldName){
     const newFormData = { 
       id: articolsList.length,
       ...formData };
+      
     // aggiorno la chiave fieldName con il valore newValue
     newFormData[fieldName] = value
+
+  
     // passo l'oggetto modificato a setFormData
     setFormData(newFormData);
   } 
@@ -41,32 +47,51 @@ export default function TheForm() {
     console.log(articolsList)
   }
 
+  function updateArticol(id) {
+
+    const articolToEdit = articolsList.find((articol) => articol.id === id);
+    setFormData({ ...articolToEdit });
+
+    setEditingArticolId(id);
+  }
+
   return (
     <>
-    <ul>
+    <ul className='articolsList'>
      { articolsList.map((articol, idx) => { 
 
         // console.log(articolsList)
-      return ( <li key={idx}> NOME ARTICOLO: {articol.name} - PREZZO: {articol.price} € <button onClick={() => {destroyArticol(idx)}}>X</button> </li>
+      return ( <li key={idx}> NOME ARTICOLO: {articol.name} - PREZZO: {articol.price} € 
+      <button onClick={() => {destroyArticol(idx)}}><i class="fa-solid fa-trash-can"></i></button> 
+      <button onClick={() => {updateArticol(idx)}}><i class="fa-solid fa-marker"></i></button>
+      </li>
         
       )
      })}
     </ul>
 
-    <form onSubmit={sendForm}>
-    
-      <div>
-        <label htmlFor="name">nome articolo</label>
-        <input type="text" value={formData.name} onChange={(e) => changeValueForm(e.target.value, "name")}/>
-      </div> 
 
-      <div>
-        <label htmlFor="price">prezzo articolo</label>
-        <input type="number" value={formData.price} onChange={(e) => changeValueForm(e.target.value, "price")}/>
+
+    
+      <form onSubmit={sendForm}>
+
+      <div className='addItemsSection'>
+        <h2>ADD NEW ITEMS ON OURS CHRISTMAS SHOP</h2>
+        <div>
+          <label htmlFor="name">nome articolo</label>
+          <input type="text" value={formData.name} onChange={(e) => changeValueForm(e.target.value, "name")}/>
+        </div> 
+
+        <div>
+          <label htmlFor="price">prezzo articolo</label>
+          <input type="number" value={formData.price} onChange={(e) => changeValueForm(e.target.value, "price")}/>
+        </div>
+
+        <button>send</button>
       </div>
 
-      <button>send</button>
-    </form>
+      </form>
+
     </>
   )
 }
