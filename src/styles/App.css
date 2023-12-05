@@ -1,0 +1,15 @@
+header{
+  height: 120px;
+  background-color: #888;
+}
+
+footer{
+  height: 80px;
+  background-color: #555;
+}
+
+main{
+  height: calc(100vh - 200px);
+  overflow: auto;
+  padding: 50px;
+}
