@@ -1,8 +1,7 @@
-# React + Vite
+#Creare un semplice form con un campo input per il titolo di un articolo del blog.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+- Al submit del form, mostrare la lista degli articoli inseriti, con la possibilità di cancellare ciascun articolo utilizzando un’icona.
 
-Currently, two official plugins are available:
+- Implementare la funzionalità di modifica del titolo di un post. (aggiungere un pulsante edit per ogni elemento)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Aggiungere più campi al form
