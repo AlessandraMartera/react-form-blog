@@ -8,8 +8,8 @@ export default function TheForm() {
   }
 
   const [articolsList, setArticolsList] = useState([
-    { id: 0, name: "pallina di natale", price: 2 }, 
-    { id: 1, name: "bastoncino di zucchero", price: 4 }
+    { id: 1, name: "pallina di natale", price: 2 }, 
+    { id: 2, name: "bastoncino di zucchero", price: 4 }
   ])
 
   const [formData, setFormData] = useState(initialFormData)
@@ -19,7 +19,7 @@ export default function TheForm() {
 
   function changeValueForm(value, fieldName){
     const newFormData = { 
-      id: articolsList.length,
+      id: articolsList.length + 1,
       ...formData };
       
     // aggiorno la chiave fieldName con il valore newValue
@@ -50,7 +50,8 @@ export default function TheForm() {
   function updateArticol(id) {
 
     const articolToEdit = articolsList.find((articol) => articol.id === id);
-    setFormData({ ...articolToEdit });
+    // setFormData({ ...articolToEdit });
+    console.log(articolToEdit)
 
     setEditingArticolId(id);
   }
