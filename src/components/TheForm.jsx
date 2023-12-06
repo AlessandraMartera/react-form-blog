@@ -59,12 +59,12 @@ export default function TheForm() {
   return (
     <>
     <ul className='articolsList'>
-     { articolsList.map((articol, idx) => { 
+     { articolsList.map((articol) => { 
 
         // console.log(articolsList)
-      return ( <li key={idx}> NOME ARTICOLO: {articol.name} - PREZZO: {articol.price} € 
-      <button onClick={() => {destroyArticol(idx)}}><i class="fa-solid fa-trash-can"></i></button> 
-      <button onClick={() => {updateArticol(idx)}}><i class="fa-solid fa-marker"></i></button>
+      return ( <li key={articol.id}> NOME ARTICOLO: {articol.name} - PREZZO: {articol.price} € 
+      <button onClick={() => {destroyArticol(articol.id)}}><i class="fa-solid fa-trash-can"></i></button> 
+      <button onClick={() => {updateArticol(articol.id)}}><i class="fa-solid fa-marker"></i></button>
       </li>
         
       )
